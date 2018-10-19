@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#795548</color>
+    <color name="colorPrimaryDark">#5D4037</color>
+    <color name="colorAccent">#FF5252</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#757575</color>
+    <color name="colorDetailsText">#B4BAC0</color>
+    <color name="colorIcons">#FFFFFF</color>
+    <color name="colorPrimaryLight">#D7CCC8</color>
+
+    <!--Bullet color for News-->
+    <color name="news">#C03823</color>
+    <!--Bullet color for sport-->
+    <color name="sport">#04B4B3</color>
+    <!--Bullet color for Lifestyle-->
+    <color name="lifestyle">#689f38</color>
+    <!--Bullet color for Art-->
+    <color name="art">#303f9f</color>
+</resources>

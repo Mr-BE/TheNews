@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">The News</string>
+
+    <!--Text value for empty view value-->
+    <string name="empty_view">Sorry couldn\'t find any news for you</string>
+    <!--Text value for no internet-->
+    <string name="no_internet">No internet connection</string>
+    <!--Text value for sport category-->
+    <string name="sport">Sport</string>
+    <!--Text value for lifestyle category-->
+    <string name="lifestyle">Lifestyle</string>
+    <!--Text value for art category-->
+    <string name="art">Art</string>
+</resources>
