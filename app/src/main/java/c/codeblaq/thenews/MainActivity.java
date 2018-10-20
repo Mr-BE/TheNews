@@ -8,7 +8,9 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -46,6 +48,9 @@ public class MainActivity extends AppCompatActivity
     //Spinning progress indicator
     @BindView(R.id.loading_spinner)
     ProgressBar mProgressSpinner;
+    //Contributor view
+    @BindView(R.id.contributor_TV)
+    @Nullable TextView contributorField;
     /**
      * Instantiate News Adapter object
      */
@@ -121,15 +126,20 @@ public class MainActivity extends AppCompatActivity
         final String QUERY_PARAM = "q";
         final String QUERY_TOPIC = "politics";
         final String API_KEY = "api-key";
+        final String QUERY_TAG = "show-tags";
+        final String TAG_VALUE = "contributor";
 
         //Prepares the baseUri just parsed for query parameters
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         //Append query parameter and its value
         uriBuilder.appendQueryParameter(QUERY_PARAM, QUERY_TOPIC);
+        uriBuilder.appendQueryParameter(QUERY_TAG, TAG_VALUE);
         uriBuilder.appendQueryParameter( API_KEY, BuildConfig.GUARDIAN_API_KEY);
         //Return new appended url
         //Create new loader for specified URL
+
+        Log.v("MainActivity: ", "uri is - "+ uriBuilder.toString());
         return new NewsLoader(this, uriBuilder.toString());
     }
 

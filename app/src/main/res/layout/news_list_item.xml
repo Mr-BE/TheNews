@@ -51,6 +51,19 @@
             android:textColor="@color/colorSecondaryText"
             android:textSize="12sp"
             tools:text="@string/sport" />
+        
+        <TextView
+            android:id="@+id/contributor_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:textColor="@color/colorDetailsText"
+            android:textSize="16sp"
+            tools:text="@string/lifestyle" />
+
+
     </LinearLayout>
     <!--Date and time layout-->
     <LinearLayout

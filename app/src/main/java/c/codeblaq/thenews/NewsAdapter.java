@@ -7,6 +7,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,10 @@ public class NewsAdapter extends ArrayAdapter<News> {
     //Locate publication time view
     @BindView(R.id.time_TV)
     TextView newsTime;
+
+    //Locate contributor view
+    @BindView(R.id.contributor_TV)
+    TextView contributor;
 
     /*Adapter constructor*/
     public NewsAdapter(@NonNull Context context, @NonNull List<News> news) {
@@ -93,9 +98,13 @@ public class NewsAdapter extends ArrayAdapter<News> {
         newsType.setText(currentNewsType);
 
         //Format headline to get first character
-        String formattedHealine = formatHeadline(currentNews.getmNewsHeadline());
+        String formattedHeadline = formatHeadline(currentNews.getmNewsHeadline());
         //Set ID char to bullet view
-        bulletView.setText(formattedHealine);
+        bulletView.setText(formattedHeadline);
+
+        //Attach contributor name
+        Log.v("NewsAdapter", "contributor name is "+ currentNews.getmContributor());
+        contributor.setText(currentNews.getmContributor());
 
         //Set the proper background color on the magnitude circle.
         // Fetch the background from the TextView, which is a GradientDrawable.

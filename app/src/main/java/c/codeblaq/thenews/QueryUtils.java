@@ -29,6 +29,12 @@ public final class QueryUtils {
      * Log Tag
      */
     public static final String LOG_TAG = Utils.class.getSimpleName();
+    //HTTP  success code
+    private static final int SUCCESS_CODE = 200;
+    //Read Timeout
+    private static final int READ_TIMEOUT = 10000;
+    //Connection Timeout
+    private static final int CONNECTION_TIMEOUT = 1500;
 
     //Constructor
     public QueryUtils() {
@@ -86,8 +92,8 @@ public final class QueryUtils {
 
         try {//make connection to url
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000);/*milliseconds*/
-            urlConnection.setConnectTimeout(1500); /*milliseconds*/
+            urlConnection.setReadTimeout(READ_TIMEOUT);/*milliseconds*/
+            urlConnection.setConnectTimeout(CONNECTION_TIMEOUT); /*milliseconds*/
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
@@ -95,7 +101,7 @@ public final class QueryUtils {
             //then read the input stream and parse the response
             int urlResponseCode = urlConnection.getResponseCode();
 
-            if (urlResponseCode == 200) {//successful connection
+            if (urlResponseCode == SUCCESS_CODE) {//successful connection
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
@@ -158,6 +164,8 @@ public final class QueryUtils {
             JSONArray resultsArray = responseObject.getJSONArray("results");
             //Iterate the jsonArray and get info for all news objects
             for (int i = 0; i < resultsArray.length(); i++) {
+                String authorName =" ";
+
                 //Get jsonObject
                 JSONObject results = resultsArray.getJSONObject(i);
 
@@ -170,8 +178,16 @@ public final class QueryUtils {
                 //extract news URL
                 String newsUrl = results.optString("webUrl");
 
+               /*Access tags array with results array*/
+                JSONArray tagsArray = results.optJSONArray("tags");
+                for (int j = 0; j<tagsArray.length(); j++) {
+                    JSONObject tags = tagsArray.getJSONObject(j);
+                    //extract author name
+                    authorName = tags.optString("webTitle");
+                }
+
                 //print out data
-                News news = new News(headline, newsType, newsTime, newsUrl);
+                News news = new News(headline, newsType, newsTime, newsUrl,authorName);
                 newsList.add(news);
             }
         } catch (JSONException e) {
