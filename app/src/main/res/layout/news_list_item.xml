@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="2"
-            android:textColor="@color/colorDetailsText"
+            android:textColor="@color/colorSecondaryText"
             android:textSize="12sp"
             tools:text="@string/sport" />
     </LinearLayout>
@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:textColor="@color/colorSecondaryText"
+            android:textColor="@color/colorDetailsText"
             android:textSize="12sp" />
 
         <TextView
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:textColor="@color/colorSecondaryText"
+            android:textColor="@color/colorDetailsText"
             android:textSize="12sp" />
 
     </LinearLayout>

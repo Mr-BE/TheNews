@@ -29,8 +29,7 @@ public class MainActivity extends AppCompatActivity
      */
     private static final String QUERY_URL =
             "https://content.guardianapis.com/search";
-    private static final String API_KEY =
-            "57bf0cb9-3a78-4f55-8953-f3fc65960b92";
+
     /**
      * Constant value for the news loader ID
      */
@@ -119,12 +118,16 @@ public class MainActivity extends AppCompatActivity
 
         //Break apart Uri that is passed into its parameter
         Uri baseUri = Uri.parse(QUERY_URL);
+        final String QUERY_PARAM = "q";
+        final String QUERY_TOPIC = "politics";
+        final String API_KEY = "api-key";
 
         //Prepares the baseUri just parsed for query parameters
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         //Append query parameter and its value
-        uriBuilder.appendQueryParameter("api-key", API_KEY);
+        uriBuilder.appendQueryParameter(QUERY_PARAM, QUERY_TOPIC);
+        uriBuilder.appendQueryParameter( API_KEY, BuildConfig.GUARDIAN_API_KEY);
         //Return new appended url
         //Create new loader for specified URL
         return new NewsLoader(this, uriBuilder.toString());
